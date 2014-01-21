@@ -80,22 +80,24 @@ You can use any [FontAwesome icon class](http://fontawesome.io/icons/) available
 
 Define an icon set in your *neutral.rb* initializer
 
-    #config/initializers/neutral.rb
+```
+#config/initializers/neutral.rb
 
-    Neutral.define do
-      set :myicons do
-        positive "fa-thumbs-up"
-        negative "fa-thumbs-down"
-        remove "fa-times"
-      end
-      
-      set :fabulous do
-        positive "fa-plus"
-        # If any of action is omitted, definition from your default icon set is used.
-        # In this case "fa-thumbs-down-o" would be used for negative and "fa-times" 
-        # for remove action because because :thumbs(default set) contains these definitions.
-      end
-    end
+Neutral.define do
+  set :myicons do
+    positive "fa-thumbs-up"
+    negative "fa-thumbs-down"
+    remove "fa-times"
+  end
+
+  set :fabulous do
+    positive "fa-plus"
+    # If any of action is omitted, definition from your default icon set is used.
+    # In this case "fa-thumbs-down-o" would be used for negative and "fa-times" 
+    # for remove action because because :thumbs(default set) contains these definitions.
+  end
+end
+```
 
 Finally use it as follows :
 
