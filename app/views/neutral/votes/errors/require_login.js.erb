@@ -1,0 +1,10 @@
+$(document).ready(function() {
+
+  neutral = $("div.neutral").find("<%= by_url %>").parent();
+
+  neutral.find("span.error").remove();
+
+  $("<span class='error'><%= t('errors.require_login') %></span>").appendTo(neutral).delay(4000).hide(0);
+
+});
+

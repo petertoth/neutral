@@ -1,0 +1,43 @@
+/*
+ *= require font-awesome
+ *= require_self
+ *= require_tree .
+ */
+
+div.neutral a {
+  display: inline;
+  margin: 0 4px;
+  color: inherit;
+  outline: none;
+}
+
+div.neutral a:hover {
+  border: none;
+  opacity: .8;
+  text-decoration: none;
+}
+
+div.neutral a.remove {
+  opacity: .4;
+}
+
+div.neutral i {
+  font-size: 1.2em;
+}
+
+div.neutral span {
+  display: inline;  
+}
+
+div.neutral span#positive, div.neutral span.positive {
+  color: green;
+}
+
+div.neutral span#negative, div.neutral span.negative {
+  color: red;
+}
+
+div.neutral span.error {
+  margin-left: 5px;
+  color: red;
+}

@@ -1,0 +1,6 @@
+en:
+  errors:
+    duplication: "You have already selected this option!"
+    cannot_change: "You are not permitted to change the vote!"
+    require_login : "You must be logged in to vote!"
+  

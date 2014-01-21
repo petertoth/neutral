@@ -1,0 +1,27 @@
+$(document).ready(function() {
+
+  neutral = $("div.neutral").find("<%= by_url %>").parent();
+
+  neutral.find("span#positive").html("<%= voting.positive.nonzero? %>");
+  neutral.find("span#negative").html("<%= voting.negative.nonzero? %>");
+  neutral.find("span#difference").html("<%= voting.difference.nonzero?.try(:abs) %>");
+
+  neutral.find("span#difference").attr("class", "<%= voting.difference > 0 ? 'positive' : 'negative' %>");
+
+  <% if vote.voter_id && Neutral.config.can_change %>
+
+  neutral.find("a[class!='remove']").data('method', 'patch');
+  neutral.find("a[class!='remove']").attr('data-method', 'patch');
+  neutral.find("a.positive").attr('href', '<%= vote_path(1) %>');
+  neutral.find("a.negative").attr('href', '<%= vote_path(0) %>');
+
+  neutral.append('<%= escape_javascript(
+    Neutral::VotingBuilder::Elements::Link::Remove.new(
+      Neutral::VotingBuilder::Router.new(vote)[:remove],
+      Neutral.icons.send(Neutral.config.default_icon_set).send(:remove)).to_s
+    )
+  %>');
+
+  <% end %>
+
+});

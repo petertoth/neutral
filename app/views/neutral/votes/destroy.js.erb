@@ -1,0 +1,18 @@
+$(document).ready(function() {
+
+  neutral = $("div.neutral").find("<%= by_url %>").parent();
+
+  neutral.find("a[class!='remove']").data('method', 'post');
+  neutral.find("a[class!='remove']").attr('data-method', 'post');
+  neutral.find("a.positive").attr('href', '<%= votes_path(1) %>');
+  neutral.find("a.negative").attr('href', '<%= votes_path(0) %>');
+
+  neutral.find("span#positive").html("<%= voting.positive.nonzero? %>");
+  neutral.find("span#negative").html("<%= voting.negative.nonzero? %>");
+  neutral.find("span#difference").html("<%= voting.difference.nonzero?.try(:abs) %>");
+
+  neutral.find("span#difference").attr("class", "<%= voting.difference > 0 ? 'positive' : 'negative' %>");
+
+  neutral.find("a.remove").remove();
+
+});

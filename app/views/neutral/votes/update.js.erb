@@ -1,0 +1,11 @@
+$(document).ready(function() {
+
+  neutral = $("div.neutral").find("<%= by_url %>").parent();
+
+  neutral.find("span#positive").html("<%= voting.positive.nonzero? %>");
+  neutral.find("span#negative").html("<%= voting.negative.nonzero? %>");
+  neutral.find("span#difference").html("<%= voting.difference.nonzero?.try(:abs) %>");
+
+  neutral.find("span#difference").attr("class", "<%= voting.difference > 0 ? 'positive' : 'negative' %>");
+
+});

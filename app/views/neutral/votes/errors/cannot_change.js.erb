@@ -1,0 +1,9 @@
+$(document).ready(function() {
+
+  neutral = $("div.neutral").find("<%= by_url %>").parent();
+
+  neutral.find("span.error").remove();
+
+  $("<span class='error'><%= t('errors.cannot_change') %></span>").appendTo(neutral).delay(4000).hide(0);
+
+});
