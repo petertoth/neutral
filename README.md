@@ -42,7 +42,7 @@ And select your voter model
       neutral_voter
     end
 
-*Note: If your voter model is not User configure this setting inside neutral.rb intializer*
+*Note: If your voter model is not User configure this setting inside neutral.rb [intializer](https://github.com/petertoth/neutral#configuring-neutral)*
 
 To display voting use `voting_for` helper in your view : 
 
@@ -54,7 +54,7 @@ To display voting use `voting_for` helper in your view : 
 
 You can also pass two additional options to `voting_for` helper
 
-* **icons** : Icons used for positive/negative/remove
+* **[icons](https://github.com/petertoth/neutral#font-awesome)** : Icons used for positive/negative/remove
 * **difference** : Display difference count instead of positive/negative counts
 <br>*If the difference is positive i.e positive votes - negative votes > 0 then the color of the span is green, red otherwise*
 
@@ -69,7 +69,7 @@ In *config/initializers/neutral.rb* you can configure these options :
 * **can_change** : Determine wheter a voter can change(update,delete) his vote
 * **current_voter_method** : This is most typically `current_user` but if not, change this to your own representation of a voter instance e.g `current_client` or `current_customer`. Also make sure it accessible from your ApplicationController.
 * **require_login** : Voter is/is not required to be authenticated in order to vote. Setting to false is not recommended
-* **vote_owner_class** : Configure an owner of a vote. Pass string of class name of the model you added `neutral_voter` into. For example `'Client'` or `'Customer'`
+* **vote_owner_class** : Configure an owner of a vote. Pass string of class name of the model you added `neutral_voter` into. For example `'User'`, `'Client'` or `'Customer'`
 * **default_icon_set** : This icon set is used when no explicit icon set is passed to `voting_for` helper
 
 ### Font Awesome
@@ -139,4 +139,3 @@ It :
 
 ## License
 MIT License. Copyright (c) 2014
-) 2014
