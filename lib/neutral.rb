@@ -24,6 +24,7 @@ module Neutral
 
   module Helpers
     autoload :Routes, 'neutral/helpers/routes'
+    autoload :CurrentVoter, 'neutral/helpers/current_voter'
     autoload :ActionViewExtension, 'neutral/helpers/action_view_extension'
   end
 
