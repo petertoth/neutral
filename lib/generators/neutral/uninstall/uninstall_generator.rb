@@ -18,7 +18,7 @@ module Neutral
 
       def remove_stylesheet
         if File.binread(css_format[0]).include? "require neutral"
-          gsub_file css_format[0], "\n#{css_format[1]} require neutral\n", ""
+          gsub_file css_format[0], /#{css_format[1]} require neutral/, ""
         else
           say_status("skipped", "remove from '#{css_format[0]}'", :yellow)
         end

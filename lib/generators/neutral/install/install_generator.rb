@@ -26,7 +26,7 @@ module Neutral
         if File.binread(css_format[0]).include? "require neutral"
           say_status "skipped", "insert into '#{css_format[0]}'", :yellow
         else
-          insert_into_file css_format[0], "\n#{css_format[1]} require neutral\n", after: /require_self/
+          insert_into_css
         end
       end
 
@@ -35,6 +35,14 @@ module Neutral
       end
 
       private
+      def insert_into_css
+        if File.binread(css_format[0]).include? "require_self"
+          insert_into_file css_format[0], "\n#{css_format[1]} require neutral\n", after: /require_self/
+        else
+          prepend_to_file css_format[0], "/*\n#{css_format[1]} require neutral\n*/\n"
+        end
+      end
+
       def self.next_migration_number(dirname)
         if ActiveRecord::Base.timestamped_migrations
           Time.now.utc.strftime("%Y%m%d%H%M%S%6N")
