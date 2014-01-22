@@ -15,19 +15,19 @@ module Neutral
 
         class Positive < Span
           def to_s
-            content_tag :span, total, id: 'positive'
+            content_tag :span, total, class: 'positive'
           end
         end
 
         class Negative < Span
           def to_s
-            content_tag :span, total, id: 'negative'
+            content_tag :span, total, class: 'negative'
           end
         end
 
         class Difference < Span
           def to_s
-            content_tag :span, total.try(:abs), class: color, id: 'difference'
+            content_tag :span, total.try(:abs), class: "difference #{color}"
           end
 
           private

@@ -29,11 +29,11 @@ div.neutral span {
   display: inline;  
 }
 
-div.neutral span#positive, div.neutral span.positive {
+div.neutral span.positive {
   color: green;
 }
 
-div.neutral span#negative, div.neutral span.negative {
+div.neutral span.negative {
   color: red;
 }
 

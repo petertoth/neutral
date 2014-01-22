@@ -9,18 +9,16 @@ describe Neutral::VotingBuilder::Builder, type: :feature do
       subject { Neutral::VotingBuilder::Builder.new(voteable, {}).build }
 
       it { should have_selector "div.neutral" }
-      it { should have_selector "span#positive" }
+      it { should have_selector "span.positive" }
       it { should have_selector "a.positive" }
       it { should have_selector "a.negative" }
-      it { should have_selector "span#negative" }
+      it { should have_selector "span.negative" }
     end
 
     context "with difference" do
       subject { Neutral::VotingBuilder::Builder.new(voteable, difference: true).build }
 
-      it { should have_selector "span#difference" }
-      it { should_not have_selector "span#positive" }
-      it { should_not have_selector "span#negative" }
+      it { should have_selector "span.difference" }
     end
 
     describe "remove link" do
