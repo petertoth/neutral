@@ -3,7 +3,6 @@ require "neutral/engine"
 require "jquery-rails"
 require "font-awesome-rails"
 
-require "neutral/engine"
 require "neutral/configuration"
 
 module Neutral
