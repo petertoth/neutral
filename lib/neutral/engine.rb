@@ -5,8 +5,8 @@ module Neutral
     initializer 'extensions' do
       ::ActiveSupport.on_load(:active_record) { extend Neutral::Model::ActiveRecordExtension }
       ::ActiveSupport.on_load(:action_view) { include Neutral::Helpers::ActionViewExtension }
+      ::ActiveSupport.on_load(:action_controller) { include Neutral::Helpers::CurrentVoter }
       ::ActionDispatch::Routing::Mapper.send(:include, Neutral::Helpers::Routes)
-      ::ApplicationController.send(:include, Neutral::Helpers::CurrentVoter)
     end
 
     config.after_initialize do
