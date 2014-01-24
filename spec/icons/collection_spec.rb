@@ -35,4 +35,3 @@ describe Neutral::Icons::Collection do
     end
   end
 end
-

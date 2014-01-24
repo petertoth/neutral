@@ -13,4 +13,3 @@ module Neutral
     end
   end
 end
-

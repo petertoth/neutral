@@ -48,4 +48,3 @@ describe Neutral::Vote do
     end
   end
 end
-

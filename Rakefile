@@ -21,4 +21,3 @@ require 'rake/version_task'
 Rake::VersionTask.new
 
 Bundler::GemHelper.install_tasks
-
