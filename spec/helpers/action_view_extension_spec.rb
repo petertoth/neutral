@@ -21,7 +21,7 @@ describe "#voting_for", type: :feature do
 
   context "when an invalid object" do
     it "raises InvalidVoteableObject error" do
-      expect { voting_for "not a voteable object" }.to raise_error
+        expect { view.voting_for "not a voteable object" }.to raise_error
     end
   end
 
