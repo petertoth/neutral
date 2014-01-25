@@ -34,14 +34,14 @@ module Neutral
     end
 
     def can_change?
-      raise Errors::CannotChange unless Neutral.config.can_change && authorized?
+      raise Errors::CannotChange unless Neutral.config.can_change && owner?
     end
 
     def vote_params
       params.require(:vote).permit(:voteable_type, :voteable_id, :value).merge voter_id: current_voter.try(:id)
     end
 
-    def authorized?
+    def owner?
       current_voter == vote.voter
     end
   end
