@@ -12,6 +12,9 @@ module Neutral
       def migrations
         migration_template "votes.rb", "db/migrate/create_neutral_votes"
         migration_template "votings.rb", "db/migrate/create_neutral_votings"
+
+        migration_template "index_votes.rb", "db/migrate/add_index_to_neutral_votes"
+        migration_template "index_votings.rb", "db/migrate/add_index_to_neutral_votings"
       end
 
       def routes

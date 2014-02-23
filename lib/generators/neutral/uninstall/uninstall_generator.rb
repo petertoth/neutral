@@ -25,7 +25,7 @@ module Neutral
       end
 
       def remove_database_entities
-        -> {
+        if yes?("Remove database entities?('neutral_votes' and 'neutral_votings' tables)")
           migration_template "drop_neutral_votes_table.rb", "db/migrate/drop_neutral_votes_table"
           migration_template "drop_neutral_votings_table.rb", "db/migrate/drop_neutral_votings_table"
 
@@ -34,8 +34,7 @@ module Neutral
           Dir.glob("db/migrate/*").keep_if { |f| f.include?("neutral") }.each do |file|
             remove_file(file)
           end if yes?("Remove also remaining migration files?")
-
-        }.call if yes?("Remove database entities?('neutral_votes' and 'neutral_votings' tables)")
+        end
       end
 
       def remove_initializer

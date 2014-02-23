@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20140118172808882161) do
     t.datetime "updated_at"
   end
 
+  add_index "neutral_votes", ["voteable_type", "voteable_id"], name: "index_neutral_votes_on_voteable_type_and_voteable_id"
+  add_index "neutral_votes", ["voter_id"], name: "index_neutral_votes_on_voter_id"
+
   create_table "neutral_votings", force: true do |t|
     t.string   "votingable_type"
     t.integer  "votingable_id"
