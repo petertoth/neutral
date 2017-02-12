@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140118172808882161) do
+ActiveRecord::Schema.define(version: 20170101120005) do
 
   create_table "neutral_votes", force: true do |t|
     t.string   "voteable_type"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 20140118172808882161) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "neutral_votings", ["votingable_type", "votingable_id"], name: "index_neutral_votings_on_votingable_type_and_votingable_id"
 
   create_table "posts", force: true do |t|
     t.string   "title"
