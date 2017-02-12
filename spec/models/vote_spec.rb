@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe Neutral::Vote do
+describe Neutral::Vote, type: :model do
   it { should belong_to :voteable }
   it { should belong_to :voter }
-  it { validate_presence_of :voteable_type }
-  it { validate_presence_of :voteable_id }
-  it { validate_presence_of :value }
-  it { should ensure_inclusion_of(:value).in_range(0..1) }
+  it { should validate_presence_of :voteable_type }
+  it { should validate_presence_of :voteable_id }
+  it { should validate_presence_of :value }
+  it { should validate_inclusion_of(:value).in_range(0..1) }
   
   let!(:vote) { FactoryGirl.create(:vote) }
 
@@ -19,7 +19,8 @@ describe Neutral::Vote do
   describe "after_create" do
     context "when vote's voting does not exist yet" do
       it "adds vote to voting" do
-        Neutral::Voting.should_receive(:init).with(FactoryGirl.create(:vote))
+        Neutral::Voting.should_receive(:init)
+        FactoryGirl.create(:vote)
       end
     end
 
@@ -27,7 +28,8 @@ describe Neutral::Vote do
       let(:another_vote) { FactoryGirl.create(:vote, voteable: vote.voteable) }
 
       it "adds vote to an existing voting" do
-        vote.voting.should_receive(:add_to_existing).with(another_vote.nature)
+        vote.voting.should_receive(:add_to_existing)
+        another_vote
       end
     end
   end

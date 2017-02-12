@@ -11,21 +11,21 @@ describe Neutral::VotingBuilder::Router do
     describe "#positive" do
       subject { super().positive }
 
-      its([:path]) { should eq(vote_path(vote, value: 1)) }
-      its([:method]) { should eq('patch') }
+      it { expect(subject[:path]).to eq(vote_path(vote, value: 1)) }
+      it { expect(subject[:method]).to eq('patch') }
     end
 
     describe "#negative" do
       subject { super().negative }
 
-      its([:path]) { should eq(vote_path(vote, value: 0)) }
-      its([:method]) { should eq('patch') }
+      it { expect(subject[:path]).to eq(vote_path(vote, value: 0)) }
+      it { expect(subject[:method]).to eq('patch') }
     end
 
     describe "#remove" do
       subject { super().remove }
 
-      its([:path]) { should eq(vote_path(vote)) }
+      it { expect(subject[:path]).to eq(vote_path(vote)) }
     end
   end
 
@@ -37,15 +37,15 @@ describe Neutral::VotingBuilder::Router do
     describe "#positive" do
       subject { super().positive }
 
-      its([:path]) { should eq(votes_path(vote: vote.main_attributes.merge(value: 1))) }
-      its([:method]) { should eq('post') }
+      it { expect(subject[:path]).to eq(votes_path(vote: vote.main_attributes.merge(value: 1))) }
+      it { expect(subject[:method]).to eq('post') }
     end
 
     describe "#negative" do
       subject { super().negative }
 
-      its([:path]) { should eq(votes_path(vote: vote.main_attributes.merge(value: 0))) }
-      its([:method]) { should eq('post') }
+      it { expect(subject[:path]).to eq(votes_path(vote: vote.main_attributes.merge(value: 0))) }
+      it { expect(subject[:method]).to eq('post') }
     end
 
     describe "#remove" do

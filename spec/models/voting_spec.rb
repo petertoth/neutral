@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Neutral::Voting do
+describe Neutral::Voting, type: :model do
   it { should belong_to(:votingable) }
   
   let(:voting) { Neutral::Voting.create }
@@ -21,8 +21,8 @@ describe Neutral::Voting do
 
     it { should be_a(Neutral::Voting) }
     it { should be_persisted }
-    its(:votingable_type) { should == vote.voteable_type } 
-    its(:votingable_id) { should == vote.voteable_id }
+    it { expect(subject.votingable_type).to eq vote.voteable_type }
+    it { expect(subject.votingable_id).to eq vote.voteable_id }
     it { subject.send(vote.nature).should == 1 }
   end
 

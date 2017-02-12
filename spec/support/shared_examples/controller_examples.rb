@@ -36,7 +36,9 @@ end
 
 shared_examples "not performing destroy" do
   it "does not destroy the vote" do
-    expect { destroy(vote) }.to_not change(Neutral::Vote, :count).by(-1)
+    initial_count = Neutral::Vote.count
+    destroy(vote)
+    expect(Neutral::Vote.count).to eq(initial_count)
   end
 
   it "renders cannot_change template" do

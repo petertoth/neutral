@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :user do
     sequence :username do
-      Faker::Name.name
+      FFaker::Name.name
     end 
     password 'secret'
   end

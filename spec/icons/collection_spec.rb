@@ -31,7 +31,7 @@ describe Neutral::Icons::Collection do
     it { should be_a(Neutral::Icons::Collection::Definitions) }
 
     [:positive, :negative, :remove].each do |definition|
-      its(definition) { should == set.definitions[definition] }
+      it { expect(subject.send(definition)).to eq set.definitions[definition] }
     end
   end
 end

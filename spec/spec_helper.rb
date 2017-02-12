@@ -11,7 +11,6 @@ require 'capybara/rspec'
 require 'remarkable_activerecord'
 require 'shoulda-matchers'
 require 'database_cleaner'
-require 'debugger'
 require 'pry-rails'
 
 Rails.backtrace_cleaner.remove_silencers!
@@ -20,7 +19,6 @@ ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-  config.color_enabled = true
   config.mock_with :rspec
   config.use_transactional_fixtures = false
   config.infer_base_class_for_anonymous_controllers = true
@@ -44,4 +42,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
+
+  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
 end

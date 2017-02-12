@@ -1,14 +1,14 @@
 require 'spec_helper'
 
-describe Neutral::VotesController do
+describe Neutral::VotesController, type: :controller do
   routes { Neutral::Engine.routes }
 
   include VotesControllerHelpers
   include VotesControllerBaseClass
 
-  let(:voteable) { FactoryGirl.create(:post) }
-  let(:voter) { FactoryGirl.create(:user) }
-  let(:vote) { FactoryGirl.create(:vote) }
+  let!(:voteable) { FactoryGirl.create(:post) }
+  let!(:voter) { FactoryGirl.create(:user) }
+  let!(:vote) { FactoryGirl.create(:vote) }
 
   describe "POST #create" do
     context "when valid" do
@@ -18,7 +18,9 @@ describe Neutral::VotesController do
         end
 
         it "creates a new vote" do
-          expect { create(voteable) }.to change(Neutral::Vote, :count).by(1)
+          initial_count = Neutral::Vote.count
+          create(voteable)
+          expect(Neutral::Vote.count).to eq(initial_count + 1)
         end
 
         it "assigns a newly created vote as @vote" do
@@ -62,8 +64,13 @@ describe Neutral::VotesController do
       context "when login required" do
         subject { -> { create(voteable) } }
 
-        it { should_not change(Neutral::Vote, :count).by(1) }
-        its(:call) { should render_template('errors/require_login') }
+        it "does not create a vote" do
+          initial_count = Neutral::Vote.count
+          subject.call
+          expect(Neutral::Vote.count).to eq(initial_count)
+        end
+
+        it { expect(subject.call).to render_template('errors/require_login') }
       end
     end
   end
