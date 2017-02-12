@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "neutral"
   s.version     = Neutral::VERSION
   s.authors     = ["Peter Tóth"]
-  s.email       = ["proximin@gmail.com"]
+  s.email       = ["peter@petertoth.me"]
   s.homepage    = "https://github.com/petertoth/neutral"
   s.summary     = "Rails engine providing positive/negative ajaxful voting solution with FontAwesome integration and handful of additional features."
   s.description = "Rails engine providing positive/negative ajaxful voting solution with FontAwesome integration and handful of additional features."
@@ -29,5 +29,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "database_cleaner"
   s.add_development_dependency "remarkable_activerecord"
   s.add_development_dependency "shoulda-matchers"
-  s.add_development_dependency "debugger"
 end
