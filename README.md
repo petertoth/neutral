@@ -32,13 +32,13 @@ And proceed to migrate newly created migration files
 
 Make your ActiveRecord model voteable
 
-    class Post < ActiveRecord::Base
+    class Post < ApplicationRecord
       neutral
     end
 
 And select your voter model
 
-    class User < ActiveRecord::Base
+    class User < ApplicationRecord
       neutral_voter
     end
 
