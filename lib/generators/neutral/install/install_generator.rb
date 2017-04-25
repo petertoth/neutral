@@ -10,11 +10,11 @@ module Neutral
       source_root File.expand_path("../templates", __FILE__)
 
       def migrations
-        migration_template "votes.rb", "db/migrate/create_neutral_votes"
-        migration_template "votings.rb", "db/migrate/create_neutral_votings"
+        migration_template "votes.rb", "db/migrate/create_neutral_votes.rb"
+        migration_template "votings.rb", "db/migrate/create_neutral_votings.rb"
 
-        migration_template "index_votes.rb", "db/migrate/add_index_to_neutral_votes"
-        migration_template "index_votings.rb", "db/migrate/add_index_to_neutral_votings"
+        migration_template "index_votes.rb", "db/migrate/add_index_to_neutral_votes.rb"
+        migration_template "index_votings.rb", "db/migrate/add_index_to_neutral_votings.rb"
       end
 
       def routes
